@@ -5,30 +5,29 @@
 #include "../../src/chord_map.h"
 
 void test_Octave(char *root, char *octave) {
-    /*     HashMap *map = hash_map_create();
-        populate_hash_map(map);
+    HashMap *map = hash_map_create();
+    populate_hash_map(map);
 
-        int root_midi = note_to_midi(root);
-        int octave_midi = note_to_midi(octave);
+    int root_midi = note_to_midi(root);
+    int octave_midi = note_to_midi(octave);
 
-        int chord_root_position[] = {root_midi, octave_midi};
-        chord_t *chord = chord_analyzer(chord_root_position,2, map);
+    int chord_root_position[] = {root_midi, octave_midi};
+    chord_t *chord = chord_analyzer(chord_root_position, 2, map);
 
-        char expected[20];
-        char extract_root[3];
+    char expected[20];
+    char extract_root[3];
 
-        extract_note_name(root, extract_root);
-        sprintf(expected, "%s octave", extract_root);
+    extract_note_name(root, extract_root);
+    sprintf(expected, "%s octave", extract_root);
 
-        if (strcmp(chord->to_string, expected) != 0) {
-            puts("");
-            puts("");
-            printf("Test failed: %s + %s\n", root, octave);
-            printf("Expected: '%s'\n", expected);
-            printf("Got:      '%s'", chord->to_string);
-            CU_FAIL("Chord analysis failed");
-        }
-            */
+    if (strcmp(chord->to_string, expected) != 0) {
+        puts("");
+        puts("");
+        printf("Test failed: %s + %s\n", root, octave);
+        printf("Expected: '%s'\n", expected);
+        printf("Got:      '%s'", chord->to_string);
+        CU_FAIL("Chord analysis failed");
+    }
 }
 
 void test_C_octave(void) { test_Octave("C3", "C4"); }

@@ -5,8 +5,8 @@
 #include "../../src/chord_map.h"
 
 // Test function for a given major triad chord
-void test_dim7_chord( char *root,  char *minor_3rd,
-                      char *tritone,  char *diminished_7th) {
+void test_dim7_chord(char *root, char *minor_3rd, char *tritone,
+                     char *diminished_7th) {
     HashMap *map = hash_map_create();
     populate_hash_map(map);
 
@@ -19,7 +19,7 @@ void test_dim7_chord( char *root,  char *minor_3rd,
                                  diminished_7th_midi};
 
     chord_t *chord1 = chord_analyzer(chord_root_position, 4, map);
-    
+
     char expected[20];
     char extract_root[3];
     extract_note_name(root, extract_root);

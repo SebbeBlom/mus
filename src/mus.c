@@ -98,9 +98,8 @@ void CheckKeyClicks(HashMap *chord_map) {
 
             // Calculate black key position
             int x = whiteKeyIndex * WHITE_KEY_WIDTH - (BLACK_KEY_WIDTH / 2);
-            if (mouseX >= x && mouseX <= x + BLACK_KEY_WIDTH &&
-                mouseY >= 50 && mouseY <= 50 + BLACK_KEY_HEIGHT) {
-
+            if (mouseX >= x && mouseX <= x + BLACK_KEY_WIDTH && mouseY >= 50 &&
+                mouseY <= 50 + BLACK_KEY_HEIGHT) {
                 keys[i].isPressed = !keys[i].isPressed;
                 goto updateChord;
             }
@@ -113,7 +112,6 @@ void CheckKeyClicks(HashMap *chord_map) {
                 int x = whiteKeyIndex * WHITE_KEY_WIDTH;
                 if (mouseX >= x && mouseX <= x + WHITE_KEY_WIDTH &&
                     mouseY >= 50 && mouseY <= SCREEN_HEIGHT) {
-                    
                     keys[i].isPressed = !keys[i].isPressed;
                     break;
                 }
@@ -132,7 +130,8 @@ void CheckKeyClicks(HashMap *chord_map) {
 
         // Analyze chord
         if (selectedCount > 0) {
-            chord_t *result = chord_analyzer(selectedNotes, selectedCount, chord_map);
+            chord_t *result =
+                chord_analyzer(selectedNotes, selectedCount, chord_map);
             if (result) {
                 strncpy(chordText, result->to_string, 49);
                 chordText[49] = '\0';

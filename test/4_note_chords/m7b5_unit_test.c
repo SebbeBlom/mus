@@ -16,8 +16,8 @@ void test_dominant_seven_chord(char *root, char *major_3rd, char *perfect_5th,
 
     int chord_root_position[] = {root_midi, major_3rd_midi, perfect_5th_midi,
                                  minor_7th_midi};
-    int chord_1st_inversion[] = {major_3rd_midi, perfect_5th_midi, minor_7th_midi,
-                                 root_midi};
+    int chord_1st_inversion[] = {major_3rd_midi, perfect_5th_midi,
+                                 minor_7th_midi, root_midi};
     int chord_2nd_inversion[] = {perfect_5th_midi, minor_7th_midi, root_midi,
                                  major_3rd_midi};
     int chord_3rd_inversion[] = {minor_7th_midi, root_midi, major_3rd_midi,
@@ -45,8 +45,8 @@ void test_dominant_seven_chord(char *root, char *major_3rd, char *perfect_5th,
 
     if (strcmp(chord2->to_string, expected) != 0) {
         puts("");
-        printf("Test failed: %s + %s + %s + %s\n", major_3rd, perfect_5th, minor_7th,
-               root);
+        printf("Test failed: %s + %s + %s + %s\n", major_3rd, perfect_5th,
+               minor_7th, root);
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord2->to_string);
         CU_FAIL("Chord analysis failed");
@@ -74,14 +74,18 @@ void test_dominant_seven_chord(char *root, char *major_3rd, char *perfect_5th,
 void test_C_m7b5(void) { test_dominant_seven_chord("C3", "D#3", "F#3", "A#3"); }
 void test_Cs_m7b5(void) { test_dominant_seven_chord("C#3", "E3", "G3", "B3"); }
 void test_D_m7b5(void) { test_dominant_seven_chord("D3", "F3", "G#3", "C4"); }
-void test_Ds_m7b5(void) { test_dominant_seven_chord("D#3", "F#3", "A3", "C#4"); }
+void test_Ds_m7b5(void) {
+    test_dominant_seven_chord("D#3", "F#3", "A3", "C#4");
+}
 void test_E_m7b5(void) { test_dominant_seven_chord("E3", "G3", "A#3", "D4"); }
 void test_F_m7b5(void) { test_dominant_seven_chord("F3", "G#3", "B3", "D#4"); }
 void test_Fs_m7b5(void) { test_dominant_seven_chord("F#3", "A3", "C4", "E4"); }
 void test_G_m7b5(void) { test_dominant_seven_chord("G3", "A#3", "C#4", "F4"); }
 void test_Gs_m7b5(void) { test_dominant_seven_chord("G#3", "B3", "D4", "F#4"); }
 void test_A_m7b5(void) { test_dominant_seven_chord("A3", "C4", "D#4", "G4"); }
-void test_As_m7b5(void) { test_dominant_seven_chord("A#3", "C#4", "E4", "G#4"); }
+void test_As_m7b5(void) {
+    test_dominant_seven_chord("A#3", "C#4", "E4", "G#4");
+}
 void test_B_m7b5(void) { test_dominant_seven_chord("B3", "D4", "F4", "A4"); }
 
 int main() {

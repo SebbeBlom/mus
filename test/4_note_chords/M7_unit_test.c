@@ -5,7 +5,8 @@
 #include "../../src/chord_map.h"
 
 // Test function for a given major 7th chord
-void test_maj7_chord(char *root, char *major_3rd, char *perfect_5th, char *major_7th) {
+void test_maj7_chord(char *root, char *major_3rd, char *perfect_5th,
+                     char *major_7th) {
     HashMap *map = hash_map_create();
     populate_hash_map(map);
 
@@ -16,21 +17,21 @@ void test_maj7_chord(char *root, char *major_3rd, char *perfect_5th, char *major
 
     int chord_root_position[] = {root_midi, major_3rd_midi, perfect_5th_midi,
                                  major_7th_midi};
-    int chord_1st_inversion[] = {major_3rd_midi, perfect_5th_midi, major_7th_midi,
-                                 root_midi};
+    int chord_1st_inversion[] = {major_3rd_midi, perfect_5th_midi,
+                                 major_7th_midi, root_midi};
     int chord_2nd_inversion[] = {perfect_5th_midi, major_7th_midi, root_midi,
                                  major_3rd_midi};
     int chord_3rd_inversion[] = {major_7th_midi, root_midi, major_3rd_midi,
                                  perfect_5th_midi};
 
     chord_t *chord1 = chord_analyzer(chord_root_position, 4, map);
-    
+
     chord_t *chord2 = chord_analyzer(chord_1st_inversion, 4, map);
-    
+
     chord_t *chord3 = chord_analyzer(chord_2nd_inversion, 4, map);
-    
+
     chord_t *chord4 = chord_analyzer(chord_3rd_inversion, 4, map);
-    
+
     char expected[20];
     char extract_root[3];
     extract_note_name(root, extract_root);
@@ -39,7 +40,8 @@ void test_maj7_chord(char *root, char *major_3rd, char *perfect_5th, char *major
     if (strcmp(chord1->to_string, expected) != 0) {
         puts("");
         puts("");
-        printf("Test failed: %s + %s + %s + %s\n", root, major_3rd, perfect_5th, major_7th);
+        printf("Test failed: %s + %s + %s + %s\n", root, major_3rd, perfect_5th,
+               major_7th);
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord1->to_string);
         CU_FAIL("Chord analysis failed");
@@ -47,7 +49,8 @@ void test_maj7_chord(char *root, char *major_3rd, char *perfect_5th, char *major
 
     if (strcmp(chord2->to_string, expected) != 0) {
         puts("");
-        printf("Test failed: %s + %s + %s + %s\n", major_3rd, perfect_5th, major_7th, root);
+        printf("Test failed: %s + %s + %s + %s\n", major_3rd, perfect_5th,
+               major_7th, root);
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord2->to_string);
         CU_FAIL("Chord analysis failed");
@@ -55,7 +58,8 @@ void test_maj7_chord(char *root, char *major_3rd, char *perfect_5th, char *major
 
     if (strcmp(chord3->to_string, expected) != 0) {
         puts("");
-        printf("Test failed: %s + %s + %s + %s\n", perfect_5th, major_7th, root, major_3rd);
+        printf("Test failed: %s + %s + %s + %s\n", perfect_5th, major_7th, root,
+               major_3rd);
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord3->to_string);
         CU_FAIL("Chord analysis failed");
@@ -63,7 +67,8 @@ void test_maj7_chord(char *root, char *major_3rd, char *perfect_5th, char *major
 
     if (strcmp(chord4->to_string, expected) != 0) {
         puts("");
-        printf("Test failed: %s + %s + %s + %s\n", major_7th, root, major_3rd, perfect_5th);
+        printf("Test failed: %s + %s + %s + %s\n", major_7th, root, major_3rd,
+               perfect_5th);
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord4->to_string);
         CU_FAIL("Chord analysis failed");

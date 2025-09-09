@@ -7,7 +7,7 @@
 void test_m2nd(char *root, char *minor_2nd) {
     HashMap *map = hash_map_create();
     populate_hash_map(map);
-    
+
     int root_midi = note_to_midi(root);
     int minor_2nd_midi = note_to_midi(minor_2nd);
 

@@ -1,9 +1,9 @@
 #include "chord_map.h"
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 bool array_equals(int *arr1, int len1, int *arr2, int len2) {
     if (len1 != len2) {
@@ -16,7 +16,7 @@ bool array_equals(int *arr1, int len1, int *arr2, int len2) {
         }
     }
 
-    return true;  
+    return true;
 }
 
 // Create a new hash map
@@ -40,7 +40,7 @@ void hash_map_insert(HashMap *map, int *relations, int length, chord_t *chord) {
         if (current->key == key &&
             array_equals(current->chord->relations,
                          current->chord->relations_length, relations, length)) {
-            current->chord = chord;  
+            current->chord = chord;
             return;
         }
         current = current->next;
@@ -81,10 +81,9 @@ chord_t *chord_create(int root_index, char *quality, int *relations,
                       int relations_length) {
     chord_t *chord = calloc(1, sizeof(chord_t));
     chord->root_index = root_index;
-    chord->quality = strdup(quality); 
+    chord->quality = strdup(quality);
     chord->relations = malloc(relations_length * sizeof(int));
-    memcpy(chord->relations, relations,
-           relations_length * sizeof(int));
+    memcpy(chord->relations, relations, relations_length * sizeof(int));
     chord->relations_length = relations_length;
     return chord;
 }
@@ -117,16 +116,14 @@ int extract_note_name(char *note, char *note_name) {
         note_name[i] = note[i];
         i++;
     }
-    note_name[i] = '\0'; 
+    note_name[i] = '\0';
 
     return atoi(&note[i]);
 }
 
 int note_to_midi(char *note) {
-    const char *notes[] = {
-        "C", "C#", "D", "D#", "E", "F",
-        "F#", "G", "G#", "A", "A#", "B"
-    };
+    const char *notes[] = {"C",  "C#", "D",  "D#", "E",  "F",
+                           "F#", "G",  "G#", "A",  "A#", "B"};
 
     char note_name[3] = {0};
     int octave = extract_note_name(note, note_name);
@@ -146,7 +143,6 @@ int note_to_midi(char *note) {
 
     return ((octave + 1) * 12) + note_index;
 }
-
 
 void add_two_note_chords(HashMap *map) {
     int m2[] = {1};
@@ -303,23 +299,19 @@ void add_four_note_chords(HashMap *map) {
 
     // Minor Major 7 (mM7)
     int mM7_root[] = {3, 4, 4};
-    chord_t *mM7_root_chord =
-        chord_create(0, strdup("mM7"), mM7_root, 3);
+    chord_t *mM7_root_chord = chord_create(0, strdup("mM7"), mM7_root, 3);
     hash_map_insert(map, mM7_root, 3, mM7_root_chord);
 
     int mM7_1st[] = {4, 4, 1};
-    chord_t *mM7_1st_chord =
-        chord_create(2, strdup("mM7"), mM7_1st, 3);
+    chord_t *mM7_1st_chord = chord_create(2, strdup("mM7"), mM7_1st, 3);
     hash_map_insert(map, mM7_1st, 3, mM7_1st_chord);
 
     int mM7_2nd[] = {4, 1, 3};
-    chord_t *mM7_2nd_chord =
-        chord_create(1, strdup("mM7"), mM7_2nd, 3);
+    chord_t *mM7_2nd_chord = chord_create(1, strdup("mM7"), mM7_2nd, 3);
     hash_map_insert(map, mM7_2nd, 3, mM7_2nd_chord);
 
     int mM7_3rd[] = {1, 3, 4};
-    chord_t *mM7_3rd_chord =
-        chord_create(3, strdup("mM7"), mM7_3rd, 3);
+    chord_t *mM7_3rd_chord = chord_create(3, strdup("mM7"), mM7_3rd, 3);
     hash_map_insert(map, mM7_3rd, 3, mM7_3rd_chord);
 
     // Diminished 7th (dim7)

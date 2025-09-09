@@ -27,7 +27,8 @@ void test_P5(char *root, char *perfect_5th) {
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord->to_string);
         CU_FAIL("Chord analysis failed");
-    }}
+    }
+}
 
 void test_C_perfect_5th(void) { test_P5("C3", "G3"); }
 void test_Cs_perfect_5th(void) { test_P5("C#3", "G#3"); }

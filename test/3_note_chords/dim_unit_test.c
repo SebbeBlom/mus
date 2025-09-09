@@ -6,7 +6,7 @@
 
 void test_dim_triad_chord(char *root, char *minor_3rd, char *tritone) {
     HashMap *map = hash_map_create();
-    populate_hash_map(map); 
+    populate_hash_map(map);
 
     int root_midi = note_to_midi(root);
     int minor_3rd_midi = note_to_midi(minor_3rd);

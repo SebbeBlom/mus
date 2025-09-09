@@ -13,7 +13,7 @@ void test_sus4_chord(char *root, char *perfect_4th, char *perfect_5th) {
     int perfect_5th_midi = note_to_midi(perfect_5th);
 
     int chord_root_position[] = {root_midi, perfect_4th_midi, perfect_5th_midi};
-    
+
     chord_t *chord = chord_analyzer(chord_root_position, 3, map);
 
     char expected[20];

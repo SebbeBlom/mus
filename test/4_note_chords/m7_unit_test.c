@@ -17,21 +17,21 @@ void test_min7_chord(char *root, char *minor_3rd, char *perfect_5th,
 
     int chord_root_position[] = {root_midi, minor_3rd_midi, perfect_5th_midi,
                                  minor_7th_midi};
-    int chord_1st_inversion[] = {minor_3rd_midi, perfect_5th_midi, minor_7th_midi,
-                                 root_midi};
+    int chord_1st_inversion[] = {minor_3rd_midi, perfect_5th_midi,
+                                 minor_7th_midi, root_midi};
     int chord_2nd_inversion[] = {perfect_5th_midi, minor_7th_midi, root_midi,
                                  minor_3rd_midi};
     int chord_3rd_inversion[] = {minor_7th_midi, root_midi, minor_3rd_midi,
                                  perfect_5th_midi};
 
     chord_t *chord1 = chord_analyzer(chord_root_position, 4, map);
-    
+
     chord_t *chord2 = chord_analyzer(chord_1st_inversion, 4, map);
-    
+
     chord_t *chord3 = chord_analyzer(chord_2nd_inversion, 4, map);
-    
+
     chord_t *chord4 = chord_analyzer(chord_3rd_inversion, 4, map);
-    
+
     char expected[20];
     char extract_root[3];
     extract_note_name(root, extract_root);
@@ -67,8 +67,8 @@ void test_min7_chord(char *root, char *minor_3rd, char *perfect_5th,
 
     if (strcmp(chord4->to_string, expected) != 0) {
         puts("");
-        printf("Test failed: %s + %s + %s + %s\n", minor_7th, root,
-               minor_3rd, perfect_5th);
+        printf("Test failed: %s + %s + %s + %s\n", minor_7th, root, minor_3rd,
+               perfect_5th);
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord4->to_string);
         CU_FAIL("Chord analysis failed");

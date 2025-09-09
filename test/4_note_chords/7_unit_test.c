@@ -16,8 +16,8 @@ void test_dominant_seven_chord(char *root, char *major_3rd, char *perfect_5th,
 
     int chord_root_position[] = {root_midi, major_3rd_midi, perfect_5th_midi,
                                  minor_7th_midi};
-    int chord_1st_inversion[] = {major_3rd_midi, perfect_5th_midi, minor_7th_midi,
-                                 root_midi};
+    int chord_1st_inversion[] = {major_3rd_midi, perfect_5th_midi,
+                                 minor_7th_midi, root_midi};
     int chord_2nd_inversion[] = {perfect_5th_midi, minor_7th_midi, root_midi,
                                  major_3rd_midi};
     int chord_3rd_inversion[] = {minor_7th_midi, root_midi, major_3rd_midi,
@@ -45,8 +45,8 @@ void test_dominant_seven_chord(char *root, char *major_3rd, char *perfect_5th,
 
     if (strcmp(chord2->to_string, expected) != 0) {
         puts("");
-        printf("Test failed: %s + %s + %s + %s\n", major_3rd, perfect_5th, minor_7th,
-               root);
+        printf("Test failed: %s + %s + %s + %s\n", major_3rd, perfect_5th,
+               minor_7th, root);
         printf("Expected: '%s'\n", expected);
         printf("Got:      '%s'", chord2->to_string);
         CU_FAIL("Chord analysis failed");
