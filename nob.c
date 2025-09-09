@@ -143,6 +143,18 @@ bool clean() {
         if (!nob_cmd_run(&cmd)) return false;
     }
 
+    if (nob_file_exists("nob.old")) {
+        Nob_Cmd cmd = {0};
+        nob_cmd_append(&cmd, "rm", "nob.old");
+        if (!nob_cmd_run(&cmd)) return false;
+    }
+
+    if (nob_file_exists("nob")) {
+        Nob_Cmd cmd = {0};
+        nob_cmd_append(&cmd, "rm", "nob");
+        if (!nob_cmd_run(&cmd)) return false;
+    }
+
     return true;
 }
 
