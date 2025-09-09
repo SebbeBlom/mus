@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "hash_table.h": "c",
+        "stdlib.h": "c",
+        "*.m": "c",
+        "algorithm": "c",
+        "raylib.h": "c"
+    }
+}
